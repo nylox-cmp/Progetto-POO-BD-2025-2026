@@ -3,6 +3,7 @@ package controller;
 import exception.Error;
 import gui.*;
 import model.*;
+import java.time.LocalDate;
 
 import java.util.ArrayList;
 
@@ -195,6 +196,95 @@ public class Controller {
 
     //________________________________________________________________________________________________________________________________________________
     // Ordine Controller
+    public class OrdineController {
+    private Ordine ordine;
+
+    public OrdineController(String indirizzo, String nota) {
+        this.ordine = new Ordine(indirizzo, nota);
+    }
+
+    public void aggiungiProdotto(Prodotto prodotto, int quantita) {
+        if (prodotto != null && quantita > 0) {
+            ordine.aggiungi_riga(prodotto, quantita);
+        }
+    }
+
+    public void rimuoviProdotto(Prodotto prodotto) {
+        ordine.rimuovi_riga(prodotto);
+    }
+
+    public Error applicaSconto(int puntiFedelta) {
+        return ordine.applica_sconto(puntiFedelta);
+    }
+
+    public void aggiungiRiderProposto(Rider rider) {
+        ordine.aggiungi_rider_proposto(rider);
+    }
+
+    public void rimuoviRiderProposto(Rider rider) {
+        ordine.rimuovi_rider_proposto(rider);
+    }
+
+    public double getCostoOrdine() {
+        return ordine.get_costo();
+    }
+
+    public StatoOrdine getStatoOrdine() {
+        return ordine.get_stato_ordine();
+    }
+
+    public void setStatoOrdine(StatoOrdine stato) {
+        ordine.set_stato_ordine(stato);
+    }
+
+    public String getIndirizzo() {
+        return ordine.get_indirizzo();
+    }
+
+    public void setIndirizzo(String indirizzo) {
+        ordine.set_indirizzo(indirizzo);
+    }
+
+    public String getNotaLuogoConsegna() {
+        return ordine.get_nota_luogo_consegna();
+    }
+
+    public void setNotaLuogoConsegna(String nota) {
+        ordine.set_nota_luogo_consegna(nota);
+    }
+
+    public ArrayList<Rider> getRiderProposti() {
+        return ordine.get_rider_proposti();
+    }
+
+    public Rider getRider() {
+        return ordine.get_rider();
+    }
+
+    public void setRider(Rider rider) {
+        ordine.set_rider(rider);
+    }
+
+    public ArrayList<RigaOrdine> getRigheOrdine() {
+        return ordine.get_righe_ordine();
+    }
+
+    public void setRigheOrdine(ArrayList<RigaOrdine> righe) {
+        ordine.set_righe_ordine(righe);
+    }
+
+    public LocalDate getData() {
+        return ordine.get_data();
+    }
+
+    public String getCodiceOrdine() {
+        return ordine.get_codice_ordine();
+    }
+
+    public Ordine getOrdine() {
+        return this.ordine;
+    }
+}
 
 
 
