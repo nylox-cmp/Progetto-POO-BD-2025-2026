@@ -252,6 +252,13 @@ public class Controller {
     public void setNotaLuogoConsegna(String nota) {
         ordine.set_nota_luogo_consegna(nota);
     }
+        public Rider registraRider(String email, String password, String nickname, String nome, String cognome, String mezzoTrasporto) {
+    Utente utente = new Utente(email, password, nickname, nome, cognome);
+    Rider rider = new Rider(utente);
+    rider.setMezzoTrasporto(mezzoTrasporto);
+    return rider;
+}
+
 
     public ArrayList<Rider> getRiderProposti() {
         return ordine.get_rider_proposti();
